@@ -1,0 +1,8 @@
+[build-system]
+build-backend = 'mesonpy'
+requires = ['meson-python', 'pyyaml', 'pybind11']
+
+[project]
+name = 'libcamera'
+version = '0.0.1'
+description = 'Libcamera python bindings'
