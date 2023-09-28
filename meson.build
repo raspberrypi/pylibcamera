@@ -10,7 +10,9 @@ project('pylibcamera', 'c', 'cpp',
     ],
     license : 'LGPL 2.1+')
 
-r = run_command('clone-libcamera.sh', check : true)
+message('Cloning from: @0@, revision @1@'.format(get_option('repository'), get_option('revision')))
+
+r = run_command('clone-libcamera.sh', get_option('repository'), get_option('revision'), get_option('patch'), check : true)
 
 libcamera_includes = include_directories('libcamera/include')
 libcamera_private = dependency('libcamera', required : true)
@@ -19,7 +21,7 @@ py = import('python').find_installation()
 
 subdir('libcamera/src/py')
 
-message(py.version())
+message('Using python version @0@ from @1@'.format(py.version(), py.path()))
 
 py.install_sources(
     'libcamera/src/py/libcamera/__init__.py',

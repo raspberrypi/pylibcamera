@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: CC0-1.0
+
+option('repository',
+        type : 'string',
+        value : 'https://git.libcamera.org/libcamera/libcamera.git',
+        description : 'Base repository to build from')
+
+option('revision',
+        type : 'string',
+        value : 'master',
+        description : 'Git revision to checkout')
+
+option('patch',
+        type : 'string',
+        value : 'pypatch',
+        description : 'Patch to apply')

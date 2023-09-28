@@ -4,5 +4,11 @@ requires = ['meson-python', 'pyyaml', 'pybind11']
 
 [project]
 name = 'libcamera'
-version = '0.0.1'
+version = '0.1.0+rpi.f94f8d4'
 description = 'Libcamera python bindings'
+
+[tool.meson-python.args]
+setup = [
+    '-Drepository=https://github.com/raspberrypi/libcamera.git',
+    '-Drevision=f94f8d4'
+]

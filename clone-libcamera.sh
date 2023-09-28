@@ -2,10 +2,10 @@
 
 rm -rf libcamera
 
-git clone git@github.com:raspberrypi/libcamera.git libcamera
+git clone $1 libcamera
 pushd libcamera
 
-git checkout release-v0.0.5+83-bde9b04f
-git apply ../pypatch.patch
+git checkout $2
+git apply ../$3.patch
 
 popd
