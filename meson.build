@@ -15,11 +15,16 @@ message('Cloning from: @0@, revision @1@'.format(get_option('repository'), get_o
 r = run_command('clone-libcamera.sh', get_option('repository'), get_option('revision'), get_option('patch'), check : true)
 
 libcamera_includes = include_directories('libcamera/include')
-libcamera_private = dependency('libcamera', required : true)
+libcamera_private = dependency(
+    'libcamera', required : true,
+    not_found_message : 'Requires libcamera-dev package to be installed - apt install libcamera-dev'
+)
 
 py = import('python').find_installation()
 
 subdir('libcamera/src/py')
+
+pycamera_args += '-DLIBCAMERA_BASE_PRIVATE'
 
 message('Using python version @0@ from @1@'.format(py.version(), py.path()))
 

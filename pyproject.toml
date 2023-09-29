@@ -4,8 +4,13 @@ requires = ['meson-python', 'pyyaml', 'pybind11']
 
 [project]
 name = 'libcamera'
-version = '0.1.0'
-description = 'Libcamera python bindings'
+version = '0.1.0a1'
+description = 'libcamera python bindings'
+readme = 'README.md'
+
+[project.urls]
+Source = "https://github.com/will-v-pi/pylibcamera"
+libcamera = "https://git.libcamera.org/libcamera/libcamera.git"
 
 [tool.meson-python.args]
 setup = [

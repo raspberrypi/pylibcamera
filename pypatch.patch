@@ -1,5 +1,5 @@
 diff --git a/src/py/libcamera/meson.build b/src/py/libcamera/meson.build
-index f58c719..071e6f6 100644
+index f58c7198..c65fc044 100644
 --- a/src/py/libcamera/meson.build
 +++ b/src/py/libcamera/meson.build
 @@ -1,13 +1,13 @@
@@ -18,11 +18,9 @@ index f58c719..071e6f6 100644
  
  if not pybind11_dep.found()
      pycamera_enabled = false
-@@ -76,31 +76,5 @@ pycamera_args = [
-     '-fvisibility=hidden',
+@@ -77,30 +77,3 @@ pycamera_args = [
      '-Wno-shadow',
      '-DPYBIND11_USE_SMART_HOLDER_AS_DEFAULT',
-+    '-DLIBCAMERA_BASE_PRIVATE',
  ]
 -
 -destdir = get_option('libdir') / ('python' + py3_dep.version()) / 'site-packages' / 'libcamera'
