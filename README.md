@@ -11,6 +11,13 @@ pip install libcamera
 ```
 If you have an older release of libcamera on your system then you may need to use `libcamera==version` to install the correct release.
 
+### If you get a version error
+If you get the error `This package works with libcamera version ..., but you have version ... installed`, then this means the version strings are not matching. If you have built your own version of libcamera, then just pass `-C setup-args="-Dversion=unknown"` to skip this check and follow the instructions in the next section. If you have a system installed version of libcamera then you will need to check this table for the correct pip package version to install, based on the version of libcamera you have installed. These are the common versions found on Raspberry Pis.
+
+| system and date | libcamera reported version | pip package version |
+| --------------- | -------------------------- | ------------------- |
+| Raspberry Pi Bookworm Oct 2023 | v0.1.0+52-a858d20b | 0.1a1 |
+
 ### If that doesn't work...
 
 If you have built your own version of libcamera, or your system has a version which is not compatible with a release version, then you may need to pass the repository and revision to meson. The arguments to do this are `-C setup-args="-Drepository=https://my.repository.git"` for the repository and `-C setup-args="-Drevision=branch"` for the revision. These are passed directly into `git clone` and `git checkout` respectively, so and strings that work with those will work here. The `-C, --config-settings` argument require an up to date version of `pip>=23.1` so you may first need to run `pip install --upgrade pip`

@@ -10,7 +10,17 @@ option('revision',
         value : 'master',
         description : 'Git revision to checkout')
 
+option('version',
+        type : 'string',
+        value : 'unknown',
+        description : 'libcamera version')
+
 option('patch',
         type : 'string',
         value : 'pypatch',
         description : 'Patch to apply')
+
+option('pycamera',
+        type : 'feature',
+        value : 'enabled',
+        description : 'Enable libcamera Python bindings - must be enabled')

@@ -14,8 +14,9 @@ Source = "https://github.com/will-v-pi/pylibcamera"
 
 [tool.meson-python.args]
 setup = [
-    '-Drevision=release-v0.0.5+83-bde9b04f',
-    '-Drepository=https://github.com/raspberrypi/libcamera.git'
+    '-Drevision=17d88f4',
+    '-Drepository=https://github.com/will-v-pi/libcamera.git',
+    '-Dversion=v0.1.0+99-4a23664b'
 ]
 
 [tool.flit.module]

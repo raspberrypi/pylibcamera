@@ -10,9 +10,24 @@ project('pylibcamera', 'c', 'cpp',
     ],
     license : 'LGPL 2.1+')
 
+if not get_option('pycamera').enabled()
+    error('pycamera must be enabled')
+endif
+
 message('Cloning from: @0@, revision @1@'.format(get_option('repository'), get_option('revision')))
 
-r = run_command('clone-libcamera.sh', get_option('repository'), get_option('revision'), get_option('patch'), check : true)
+run_command('clone-libcamera.sh', get_option('repository'), get_option('revision'), get_option('patch'), check : true)
+
+r = run_command('check-version.sh', capture : true)
+if r.returncode() == 0 and get_option('version') != 'unknown'
+    version = r.stdout()
+    message('libcamera version is @0@'.format(version))
+    if version.strip() != get_option('version').strip()
+        error('This package works with libcamera version @0@, but you have version @1@ installed. Please check the readme for help with this error'.format(get_option('version'), version))
+    endif
+else
+    message('Version Check Not Done')
+endif
 
 libcamera_includes = include_directories('libcamera/include')
 libcamera_private = dependency(
