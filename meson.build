@@ -18,7 +18,7 @@ message('Cloning from: @0@, revision @1@'.format(get_option('repository'), get_o
 
 run_command('clone-libcamera.sh', get_option('repository'), get_option('revision'), get_option('patch'), check : true)
 
-r = run_command('check-version.sh', capture : true)
+r = run_command('check-version.sh', capture : true, check : false)
 if r.returncode() == 0 and get_option('version') != 'unknown'
     version = r.stdout()
     message('libcamera version is @0@'.format(version))
@@ -38,8 +38,6 @@ libcamera_private = dependency(
 py = import('python').find_installation()
 
 subdir('libcamera/src/py')
-
-pycamera_args += '-DLIBCAMERA_BASE_PRIVATE'
 
 message('Using python version @0@ from @1@'.format(py.version(), py.path()))
 

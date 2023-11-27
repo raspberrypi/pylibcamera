@@ -1,20 +1,24 @@
 diff --git a/src/py/libcamera/meson.build b/src/py/libcamera/meson.build
-index 128793aa..1df65c54 100644
+index f58c7198..2aa7cd75 100644
 --- a/src/py/libcamera/meson.build
 +++ b/src/py/libcamera/meson.build
-@@ -91,6 +91,7 @@ pycamera_args = [
+@@ -1,6 +1,8 @@
+ # SPDX-License-Identifier: CC0-1.0
+ 
+-py3_dep = dependency('python3', required : get_option('pycamera'))
++
++py = import('python').find_installation('python3', required : get_option('pycamera'))
++py3_dep = py.dependency(required : get_option('pycamera'))
+ 
+ if not py3_dep.found()
+     pycamera_enabled = false
+@@ -76,7 +78,9 @@ pycamera_args = [
      '-fvisibility=hidden',
      '-Wno-shadow',
      '-DPYBIND11_USE_SMART_HOLDER_AS_DEFAULT',
 +    '-DLIBCAMERA_BASE_PRIVATE',
  ]
++subdir_done()
  
- if meson.is_cross_build()
-@@ -109,6 +110,7 @@ else
-                                    install : true,
-                                    subdir : 'libcamera',
-                                    dependencies : pycamera_deps,
-+                                   include_directories : libcamera_includes,
-                                    cpp_args : pycamera_args)
- endif
+ destdir = get_option('libdir') / ('python' + py3_dep.version()) / 'site-packages' / 'libcamera'
  
