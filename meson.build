@@ -39,7 +39,7 @@ py = import('python').find_installation()
 
 subdir('libcamera/src/py')
 
-message('Using python version @0@ from @1@'.format(py.version(), py.path()))
+message('Using python version @0@ from @1@'.format(py.version(), py.full_path()))
 
 py.install_sources(
     'libcamera/src/py/libcamera/__init__.py',
