@@ -25,10 +25,12 @@ pip install rpi-libcamera
 ```
 If you have an older release of libcamera on your system then you may need to use `rpi-libcamera==version` to install the correct release.
 
-### If you get a version error
-If you get the error `This package works with libcamera version ..., but you have version ... installed`, then this means the version strings are not matching. If you have built your own version of libcamera, then just pass `-C setup-args="-Dversion=unknown"` to skip this check and follow the instructions in the next section. If you have a system installed version of libcamera then you will need to check this table for the correct pip package version to install, based on the version of libcamera you have installed. These are the common versions found on Raspberry Pis.
+To update your installation (which may be required when you update your version of libcamera) you can run `pip install --upgrade rpi-libcamera` to update to the latest version.
 
-| system and date | libcamera reported version | pip package version |
+### If you get a version error
+If you get the error `This package works with libcamera version ..., but you have version ... installed`, then this means the version strings are not matching. If you have built your own version of libcamera, then just pass `-C setup-args="-Dversion=unknown"` to skip this check and follow the instructions in the next section. If you have a system installed version of libcamera then you will need to check this table for the correct pip package version to install, based on the version of libcamera you have installed. You can see your currently installed version of libcamera by running `rpicam-hello --version`. These are the common versions found on Raspberry Pis.
+
+| System and Date | libcamera Reported Version | Pip Package Version |
 | --------------- | -------------------------- | ------------------- |
 | Raspberry Pi Bookworm 22/11/2023 | v0.1.0+118-563cd78e | 0.1a2 |
 
