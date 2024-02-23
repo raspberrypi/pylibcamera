@@ -37,6 +37,17 @@ libcamera_private = dependency(
 
 py = import('python').find_installation()
 
+controls_files = [
+    'control_ids_core.yaml',
+    'control_ids_draft.yaml',
+    'control_ids_rpi.yaml',
+]
+
+properties_files = [
+    'property_ids_core.yaml',
+    'property_ids_draft.yaml',
+]
+
 subdir('libcamera/src/py')
 
 message('Using python version @0@ from @1@'.format(py.version(), py.full_path()))
