@@ -32,6 +32,7 @@ If you get the error `This package works with libcamera version ..., but you hav
 
 | System and Date | libcamera Reported Version | Pip Package Version |
 | --------------- | -------------------------- | ------------------- |
+| Raspberry Pi Bookworm 18/04/2024 | v0.2.0+120-eb00c13d | 0.1a4 |
 | Raspberry Pi Bookworm 15/02/2024 | v0.2.0+46-075b54d5 | 0.1a3 |
 | Raspberry Pi Bookworm 22/11/2023 | v0.1.0+118-563cd78e | 0.1a2 |
 
