@@ -29,7 +29,7 @@ else
     message('Version Check Not Done')
 endif
 
-libcamera_includes = include_directories('libcamera/include')
+libcamera_includes = include_directories('libcamera/include', 'libcamera/src/py/libcamera')
 libcamera_private = dependency(
     'libcamera', required : true,
     not_found_message : 'Requires libcamera-dev package to be installed - apt install libcamera-dev'
