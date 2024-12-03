@@ -19,6 +19,7 @@ with open("pyproject.toml") as f:
         elif "-Dversion" in line:
             version_line = i
         lines.append(line)
+pyproject_orig = lines.copy()
 
 new_version = subprocess.check_output("./check-version.sh", text=True).strip()
 old_version = lines[version_line][len("    '-Dversion="):-len("'\n")]
@@ -48,6 +49,7 @@ with open("README.md") as f:
         if "| --------------- | -------------------------- | ------------------- |" in line:
             table_end_line = i+1
         lines.append(line)
+readme_orig = lines.copy()
 
 new_table_line = f"| {input('System and Date (eg Raspberry Pi Bookworm 22/11/2023): ')} | {new_version} | {new_pyversion} |\n"
 lines.insert(table_end_line, new_table_line)
@@ -55,5 +57,21 @@ lines.insert(table_end_line, new_table_line)
 with open("README.md", "w") as f:
     f.writelines(lines)
 
+# Commit changes for build
+ret = subprocess.run(("git", "add", "."))
+ret = subprocess.run(("git", "commit", "-m", f"Update for libcamera {new_revision}"))
+
 # Run build - should now succeed
 ret = subprocess.run(("python", "-m", "build"))
+
+print(f"Finished with ret {ret.returncode}")
+if ret.returncode:
+    print("Failed - reverting changes")
+
+    with open("pyproject.toml", "w") as f:
+        f.writelines(pyproject_orig)
+
+    with open("README.md", "w") as f:
+        f.writelines(readme_orig)
+
+    ret = subprocess.run(("git", "reset", "HEAD~1"))

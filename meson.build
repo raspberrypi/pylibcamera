@@ -35,17 +35,21 @@ libcamera_private = dependency(
     not_found_message : 'Requires libcamera-dev package to be installed - apt install libcamera-dev'
 )
 
-py = import('python').find_installation()
+# Sub-directories fill py_modules with their dependencies.
+py_modules = []
+subdir('libcamera/utils/codegen')
+
+py = import('python').find_installation(modules : py_modules)
 
 controls_files = [
-    'control_ids_core.yaml',
-    'control_ids_draft.yaml',
-    'control_ids_rpi.yaml',
+    files('libcamera/src/libcamera/control_ids_core.yaml'),
+    files('libcamera/src/libcamera/control_ids_draft.yaml'),
+    files('libcamera/src/libcamera/control_ids_rpi.yaml'),
 ]
 
 properties_files = [
-    'property_ids_core.yaml',
-    'property_ids_draft.yaml',
+    files('libcamera/src/libcamera/property_ids_core.yaml'),
+    files('libcamera/src/libcamera/property_ids_draft.yaml'),
 ]
 
 subdir('libcamera/src/py')
