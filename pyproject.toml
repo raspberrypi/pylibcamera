@@ -4,7 +4,7 @@ requires = ['meson-python', 'pyyaml', 'pybind11', 'jinja2', 'ply']
 
 [project]
 name = 'rpi-libcamera'
-version = '0.1a10'
+version = '0.1a11'
 description = 'libcamera python bindings'
 readme = 'README.md'
 
